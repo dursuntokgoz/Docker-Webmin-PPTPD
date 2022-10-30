@@ -8,24 +8,24 @@ Web Page Url:<br>
 
 ## Building the image
 ```
-git clone https://github.com/dursuntokgoz/Docker-Webmin-PPTPD.git
-cd Docker-Webmin
-docker build -t webmin/vpn .
+sudo git clone https://github.com/dursuntokgoz/Docker-Webmin-PPTPD.git
+cd Docker-Webmin-PPTPD
+sudo docker build -t webmin/vpn .
 ```
 
 ## Export the image
 ```
-docker save fribox/webmin -o docker.vpn-Webmin.tar
+sudo docker save webmin/vpn -o docker.vpn-Webmin.tar
 ```
 
 ## Import the image 
 ```
-docker load -i docker.vpn-Webmin.tar
+sudo docker load -i docker.vpn-Webmin.tar
 ```
 
 ## Running the container 
 ```
-docker run --name PPTPd-Service -d --privileged --net=host --restart=always --env ROOT_PASSWORD="PassWord" --publish 10000:10000/tcp  --publish 1723:1723/tcp  --publish 1723:1723/udp webmin/vpn
+sudo docker run --name PPTPd-Service -d --privileged --cap-add=NET_ADMIN   --cap-add=SYS_MODULE   --sysctl="net.ipv4.conf.all.src_valid_mark=1"   --sysctl="net.ipv4.ip_forward=1"   --restart unless-stopped --env ROOT_PASSWORD="pass" --publish 10000:10000/tcp  --publish 1723:1723/tcp  --publish 1723:1723/udp webmin/vpn
 ```
 
 ## Log into webmin and manage your server
@@ -33,4 +33,4 @@ docker run --name PPTPd-Service -d --privileged --net=host --restart=always --en
 https://hostname.or.ip:10000
 (root:pass)
 ```
-Root Password Change : /usr/share/webmin/changepass.pl /etc/webmin admin pass
+Root Password Change : /usr/share/webmin/changepass.pl /etc/webmin root pass
