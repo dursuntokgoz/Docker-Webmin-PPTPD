@@ -46,5 +46,4 @@ EXPOSE 1723/tcp
 EXPOSE 1723/udp
 
 VOLUME ["/etc/webmin"]
-CMD /entrypoint.sh && /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log
-CMD /usr/share/webmin/changepass.pl /etc/webmin root pass
+CMD /entrypoint.sh && /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log 
