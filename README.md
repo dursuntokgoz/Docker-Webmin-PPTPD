@@ -1,35 +1,35 @@
 # Docker-Webmin
 dockerfile for webmin （Webmin 的 Docker 镜像编译文件）
 
-Download Webmin file（Webmin 官方包下载地址）:<br>
+Download Webmin file:<br>
 　　[https://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb](https://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb)<br>
-Web Page Url（Webmin 官方包下载页面）:<br>
+Web Page Url:<br>
 　　[https://www.webmin.com/download.html](https://www.webmin.com/download.html)<br>
 
-## Building the image （编译镜像）
+## Building the image
 ```
-git clone https://github.com/FriBox/Docker-Webmin.git
+git clone https://github.com/dursuntokgoz/Docker-Webmin-PPTPD.git
 cd Docker-Webmin
-docker build -t fribox/webmin .
+docker build -t webmin/vpn .
 ```
 
-## Export the image （导出镜像保存）
+## Export the image
 ```
-docker save fribox/webmin -o FriBox.Docker-Webmin.tar
-```
-
-## Import the image （手动导入镜像）
-```
-docker load -i FriBox.Docker-Webmin.tar
+docker save fribox/webmin -o docker.vpn-Webmin.tar
 ```
 
-## Running the container (启动容器)
+## Import the image 
 ```
-docker run --name Webmin-Service -d --restart=always --env ROOT_PASSWORD="PassWord" --publish 10000:10000/tcp fribox/webmin
+docker load -i docker.vpn-Webmin.tar
 ```
 
-## Log into webmin and manage your server （登录页面Webmin管理页面）
+## Running the container 
+```
+docker run --name PPTPd-Service -d --privileged --net=host --restart=always --env ROOT_PASSWORD="PassWord" --publish 10000:10000/tcp  --publish 1723:1723/tcp  --publish 1723:1723/udp webmin/vpn
+```
+
+## Log into webmin and manage your server
 ```
 https://hostname.or.ip:10000
-(root:pass) 用户名和密码
+(root:pass)
 ```
