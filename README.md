@@ -33,3 +33,4 @@ docker run --name PPTPd-Service -d --privileged --net=host --restart=always --en
 https://hostname.or.ip:10000
 (root:pass)
 ```
+Root Password Change : /usr/share/webmin/changepass.pl /etc/webmin admin pass
