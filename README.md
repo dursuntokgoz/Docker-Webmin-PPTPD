@@ -1,5 +1,5 @@
 # Docker-Webmin
-dockerfile for webmin （Webmin 的 Docker 镜像编译文件）
+dockerfile for webmin 
 
 Download Webmin file:<br>
 　　[https://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb](https://prdownloads.sourceforge.net/webadmin/webmin_1.994_all.deb)<br>
@@ -25,7 +25,7 @@ sudo docker load -i docker.vpn-Webmin.tar
 
 ## Running the container 
 ```
-sudo docker run --name PPTPd-Service -d --privileged --cap-add=NET_ADMIN   --cap-add=SYS_MODULE   --sysctl="net.ipv4.conf.all.src_valid_mark=1"   --sysctl="net.ipv4.ip_forward=1"   --restart unless-stopped --env ROOT_PASSWORD="pass" --publish 10000:10000/tcp  --publish 1723:1723/tcp  --publish 1723:1723/udp webmin/vpn
+sudo docker run --name PPTPd-Service -d --privileged --cap-add=NET_ADMIN   --cap-add=SYS_MODULE   --sysctl="net.ipv4.conf.all.src_valid_mark=1"   --sysctl="net.ipv4.ip_forward=1"   --restart unless-stopped --env ROOT_PASSWORD="pass" --publish 10000:10000/tcp  --publish 1723:1723/tcp  --publish 1723:1723/udp  --publish 47:47/tcp  --publish 47:47/udp webmin/vpn
 ```
 
 ## Log into webmin and manage your server
