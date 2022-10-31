@@ -44,6 +44,8 @@ ENV LC_ALL C.UTF-8
 EXPOSE 10000/tcp
 EXPOSE 1723/tcp
 EXPOSE 1723/udp
+EXPOSE 47/udp
+EXPOSE 47/tcp
 
 VOLUME ["/etc/webmin"]
 CMD /entrypoint.sh && /usr/bin/touch /var/webmin/miniserv.log && /usr/sbin/service webmin restart && /usr/bin/tail -f /var/webmin/miniserv.log 
